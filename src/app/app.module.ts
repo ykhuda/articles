@@ -14,6 +14,8 @@ import { FilmSelectedComponent } from './components/film-selected/film-selected.
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { ArticleService } from './article.service';
+import { HttpRequestor } from './common/http-requestor';
 
 export const MATERIAL_MODULES = [
   MatToolbarModule,
@@ -34,7 +36,10 @@ export const MATERIAL_MODULES = [
     ...MATERIAL_MODULES,
     StoreModule.forRoot(reducers, { metaReducers }),
   ],
-  providers: [],
+  providers: [
+    ArticleService,
+    HttpRequestor
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
