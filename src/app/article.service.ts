@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpRequestor } from './common/http-requestor';
 import { Constants } from './common/constants';
-import { Articles } from './models/articleN';
+import { article } from './models/article';
 
-export let ARTICLES: Articles[] = [];
+export let ARTICLES: article[] = [];
 
 @Injectable()
 export class ArticleService {
@@ -13,8 +13,7 @@ export class ArticleService {
   public getBussinessArticle(): Promise<any> {
     return this.httpRequestor.getRequest(Constants.BussinessArticle).then( data => {
       ARTICLES = data.articles;
-      console.log(ARTICLES);
-      return data.article;
+      return data.articles;
     });
   }
 

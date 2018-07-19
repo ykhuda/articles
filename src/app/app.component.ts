@@ -14,6 +14,7 @@ import { ArticleService, ARTICLES } from './article.service';
 export class AppComponent {
   articles$: Observable<article[]>;
   selected$: Observable<article>;
+  
 
   constructor(private store: Store<fromRoot.State>, private articleService: ArticleService) {
     this.articles$ = store.select(fromRoot.getAllarticles);
@@ -21,11 +22,11 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.articleService.getBussinessArticle().then(()=> {
+		this.articleService.getBussinessArticle().then(()=> {
 			this.store.dispatch(new articleAction.Select(0));
-			console.log("this.articles");
+			console.log(ARTICLES);
 		});
-  }
+	}
 
   onSelect(id: number) {
     this.store.dispatch(new articleAction.Select(id));

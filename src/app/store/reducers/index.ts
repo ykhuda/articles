@@ -30,11 +30,6 @@ export const metaReducers: MetaReducer<State>[] = [logger];
 
 export const getarticleState = createFeatureSelector<fromarticles.State>('articles');
 
-export const getIds = createSelector(
-    getarticleState,
-    fromarticles.getIds,
-);
-
 export const getarticles = createSelector(
     getarticleState,
     fromarticles.getarticles,
@@ -55,10 +50,4 @@ export const getSelectedarticle = createSelector(
     }
 );
 
-export const getAllarticles = createSelector(
-    getIds,
-    getarticles,
-    (ids, articles) => {
-        return ids.map(id => articles[id]);
-    }
-);
+export const getAllarticles = getarticles;

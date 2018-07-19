@@ -1,6 +1,12 @@
 export interface article {
-    id: number;
-    name: string;
-    img: string;
-    description: string;
+    source: {
+        id: string,
+        name: string
+    },
+    author: string,
+    title: string,
+    description: string,
+    url: string,
+    urlToImage: string,
+    publishedAt: string
 }
