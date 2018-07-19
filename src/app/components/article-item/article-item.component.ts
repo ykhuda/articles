@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Film } from '../../models';
+import { article } from '../../models';
 
 @Component({
-  selector: 'app-film-item',
+  selector: 'app-article-item',
   template: `
-    <div>{{film.name}}</div>
+    <div>{{article.name}}</div>
   `,
   styles: [`
   div {
@@ -12,8 +12,8 @@ import { Film } from '../../models';
     height: 100%;
   }`]
 })
-export class FilmItemComponent implements OnInit {
-  @Input() film: Film;
+export class articleItemComponent implements OnInit {
+  @Input() article: article;
 
   constructor() { }
 

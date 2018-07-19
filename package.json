@@ -1,16 +1,16 @@
 {
-  "name": "ngrx-films-list",
+  "name": "ngrx-articles-list",
   "version": "0.0.0",
-  "description": "Example app with ngrx - saved film list",
+  "description": "Example app with ngrx - saved article list",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GarryBrown/ngrx-films-list"
+    "url": "git+https://github.com/GarryBrown/ngrx-articles-list"
   },
   "bugs": {
-    "url": "https://github.com/GarryBrown/ngrx-films-list/issues"
+    "url": "https://github.com/GarryBrown/ngrx-articles-list/issues"
   },
-  "homepage": "https://github.com/GarryBrown/ngrx-films-list#readme",
+  "homepage": "https://github.com/GarryBrown/ngrx-articles-list#readme",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

@@ -1,6 +1,6 @@
-<mat-toolbar>Films app</mat-toolbar>
+<mat-toolbar>articles app</mat-toolbar>
 <main class="container">
-  <app-film-list [films]="films$ | async" [label]="'Список фильмов'" (select)="onSelect($event)"></app-film-list>
-  <app-film-selected [film]="selected$ | async"></app-film-selected>
+  <app-article-list [articles]="articles$ | async" [label]="'Список фильмов'" (select)="onSelect($event)"></app-article-list>
+  <app-article-selected [article]="selected$ | async"></app-article-selected>
 </main>
 

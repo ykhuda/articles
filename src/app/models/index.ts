@@ -1,1 +1,2 @@
-export * from './film';
+export * from './article';
+export * from './articleN';

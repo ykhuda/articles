@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('ngrx-films-list App', () => {
+describe('ngrx-articles-list App', () => {
   let page: AppPage;
 
   beforeEach(() => {

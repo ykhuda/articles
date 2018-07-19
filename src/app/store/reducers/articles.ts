@@ -1,21 +1,21 @@
 import { Action } from '@ngrx/store';
-import * as filmAction from '../actions/films';
+import * as articleAction from '../actions/article';
 
-import { Film } from '../../models';
+import { article } from '../../models';
 
 
 export interface State {
   ids: number[];
-  films: { [id: number]: Film };
+  articles: { [id: number]: article };
   selected: number;
 }
 
 export const initialState: State = {
   ids: [1, 2, 3],
-  films: {
+  articles: {
     1: {
       id: 1, name: 'Interstellar',
-      description: `Interstellar is a 2014 epic science fiction film directed, co-written,
+      description: `Interstellar is a 2014 epic science fiction article directed, co-written,
        and co-produced by Christopher Nolan.`,
       img: 'https://goo.gl/8mG12t'
     },
@@ -35,20 +35,20 @@ export const initialState: State = {
   selected: null,
 };
 
-export function reducer(state = initialState, action: filmAction.Action) {
+export function reducer(state = initialState, action: articleAction.Action) {
   switch (action.type) {
-    case filmAction.ADD_ONE: {
-      const newFilm: Film = action.payload;
+    case articleAction.ADD_ONE: {
+      const newarticle: article = action.payload;
 
       return {
         ...state,
-        ids: [...state.ids, newFilm.id],
-        films: { ...state.films, newFilm }
+        ids: [...state.ids, newarticle.id],
+        articles: { ...state.articles, newarticle }
       };
     }
 
 
-    case filmAction.SELECT: {
+    case articleAction.SELECT: {
       const id = action.payload;
       return {
         ...state,
@@ -62,6 +62,6 @@ export function reducer(state = initialState, action: filmAction.Action) {
 }
 
 export const getIds = (state: State) => state.ids;
-export const getFilms = (state: State) => state.films;
+export const getarticles = (state: State) => state.articles;
 export const getSelected = (state: State) => state.selected;
 

@@ -2,15 +2,15 @@ import {
   Component, OnInit, Input, OnChanges, Output,
   EventEmitter
 } from '@angular/core';
-import { Film } from '../../models';
+import { article } from '../../models';
 
 
 @Component({
-  selector: 'app-film-list',
+  selector: 'app-article-list',
   template: `
     <mat-list role="list">
-      <mat-list-item  *ngFor="let film of films" role="listitem" (click)="select.emit(film.id)">
-        <app-film-item  [film]="film"></app-film-item>
+      <mat-list-item  *ngFor="let article of articles" role="listitem" (click)="select.emit(article.id)">
+        <app-article-item  [article]="article"></app-article-item>
       </mat-list-item>
     </mat-list>
 
@@ -22,8 +22,8 @@ import { Film } from '../../models';
   }
   `]
 })
-export class FilmListComponent implements OnInit, OnChanges {
-  @Input() films: Film[];
+export class articleListComponent implements OnInit, OnChanges {
+  @Input() articles: article[];
   @Input() label: string;
   @Output() select = new EventEmitter();
 

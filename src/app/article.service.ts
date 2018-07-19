@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpRequestor } from './common/http-requestor';
 import { Constants } from './common/constants';
-import { Articles } from './models/article';
+import { Articles } from './models/articleN';
 
 export let ARTICLES: Articles[] = [];
 

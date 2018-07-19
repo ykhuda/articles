@@ -6,14 +6,14 @@ import {
     MetaReducer,
 } from '@ngrx/store';
 
-import * as fromFilms from './films';
+import * as fromarticles from './articles';
 
 export interface State {
-    films: fromFilms.State;
+    articles: fromarticles.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
-    films: fromFilms.reducer
+    articles: fromarticles.reducer
 };
 
 
@@ -28,37 +28,37 @@ export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
 export const metaReducers: MetaReducer<State>[] = [logger];
 
 
-export const getFilmState = createFeatureSelector<fromFilms.State>('films');
+export const getarticleState = createFeatureSelector<fromarticles.State>('articles');
 
 export const getIds = createSelector(
-    getFilmState,
-    fromFilms.getIds,
+    getarticleState,
+    fromarticles.getIds,
 );
 
-export const getFilms = createSelector(
-    getFilmState,
-    fromFilms.getFilms,
+export const getarticles = createSelector(
+    getarticleState,
+    fromarticles.getarticles,
 );
 
 export const getSelected = createSelector(
-    getFilmState,
-    fromFilms.getSelected,
+    getarticleState,
+    fromarticles.getSelected,
 );
 
-export const getSelectedFilm = createSelector(
+export const getSelectedarticle = createSelector(
     getSelected,
-    getFilms,
-    (selectedId, films) => {
+    getarticles,
+    (selectedId, articles) => {
         return {
-            ...films[selectedId]
+            ...articles[selectedId]
         };
     }
 );
 
-export const getAllFilms = createSelector(
+export const getAllarticles = createSelector(
     getIds,
-    getFilms,
-    (ids, films) => {
-        return ids.map(id => films[id]);
+    getarticles,
+    (ids, articles) => {
+        return ids.map(id => articles[id]);
     }
 );

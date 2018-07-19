@@ -5,11 +5,11 @@ import { StoreModule } from '@ngrx/store';
 
 
 import { AppComponent } from './app.component';
-import { FilmItemComponent } from './components/film-item/film-item.component';
-import { FilmListComponent } from './components/film-list/film-list.component';
+import { articleItemComponent } from './components/article-item/article-item.component';
+import { articleListComponent } from './components/article-list/article-list.component';
 
 import { reducers, metaReducers } from './store/reducers';
-import { FilmSelectedComponent } from './components/film-selected/film-selected.component';
+import { articleSelectedComponent } from './components/article-selected/article-selected.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
@@ -27,9 +27,9 @@ export const MATERIAL_MODULES = [
 @NgModule({
   declarations: [
     AppComponent,
-    FilmItemComponent,
-    FilmListComponent,
-    FilmSelectedComponent
+    articleItemComponent,
+    articleListComponent,
+    articleSelectedComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,8 @@
 import { Action } from '@ngrx/store';
-import { Film } from '../../models';
+import { article } from '../../models';
 
-export const SELECT = '[Films] Select';
-export const ADD_ONE = '[Films] Add One';
+export const SELECT = '[articles] Select';
+export const ADD_ONE = '[articles] Add One';
 
 export class Select implements Action {
     readonly type = SELECT;
@@ -13,7 +13,7 @@ export class Select implements Action {
 export class AddOne implements Action {
     readonly type = ADD_ONE;
 
-    constructor(public payload: Film) { }
+    constructor(public payload: article) { }
 }
 
 export type Action = AddOne | Select;
