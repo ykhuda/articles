@@ -16,6 +16,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { ArticleService } from './article.service';
 import { HttpRequestor } from './common/http-requestor';
+import { HttpClientModule } from '@angular/common/http';
 
 export const MATERIAL_MODULES = [
   MatToolbarModule,
@@ -35,6 +36,7 @@ export const MATERIAL_MODULES = [
     BrowserAnimationsModule,
     ...MATERIAL_MODULES,
     StoreModule.forRoot(reducers, { metaReducers }),
+    HttpClientModule,
   ],
   providers: [
     ArticleService,
