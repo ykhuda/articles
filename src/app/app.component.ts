@@ -18,6 +18,10 @@ export class AppComponent {
   constructor(private store: Store<fromRoot.State>, private articleService: ArticleService) {
     this.films$ = store.select(fromRoot.getAllFilms);
     this.selected$ = store.select(fromRoot.getSelectedFilm);
+    
+  }
+
+  ngOnit() {
     this.articleService.getBussinessArticle().then(()=> {
 			this.store.dispatch(new filmAction.Select(0));
 			console.log("this.articles");
