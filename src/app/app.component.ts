@@ -4,6 +4,7 @@ import { Film } from './models';
 import { Store } from '@ngrx/store';
 import * as fromRoot from './store/reducers';
 import * as filmAction from './store/actions/films';
+import { ArticleService, ARTICLES } from './article.service';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,10 @@ export class AppComponent {
   constructor(private store: Store<fromRoot.State>) {
     this.films$ = store.select(fromRoot.getAllFilms);
     this.selected$ = store.select(fromRoot.getSelectedFilm);
+    this.articleService.getBussinessArticle().then(()=> {
+			this.store.dispatch(new fromActions.ArticlesAction());
+			console.log("this.articles");
+		});
   }
 
   onSelect(id: number) {
