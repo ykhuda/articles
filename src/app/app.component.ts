@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { article } from './models';
+import { article, List } from './models';
 import { Store } from '@ngrx/store';
 import * as fromRoot from './store/reducers';
 import * as articleAction from './store/actions/article';
-import { ArticleService, ARTICLES } from './article.service';
+import { ArticleService } from './article.service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,8 @@ import { ArticleService, ARTICLES } from './article.service';
 export class AppComponent {
   articles$: Observable<article[]>;
   selected$: Observable<article>;
+  articles: Observable<article[]>;
+	lists: Observable<List[]>;
   
 
   constructor(private store: Store<fromRoot.State>, private articleService: ArticleService) {
@@ -22,9 +24,10 @@ export class AppComponent {
   }
 
   ngOnInit() {
-		this.articleService.getBussinessArticle().then(()=> {
+		this.articleService.getBussinessArticle().then((data)=> {
+      this.articles = data;
 			this.store.dispatch(new articleAction.Select(0));
-			console.log(ARTICLES);
+			console.log( this.articles );
 		});
 	}
 

@@ -2,7 +2,6 @@ import { Action } from '@ngrx/store';
 import * as articleAction from '../actions/article';
 
 import { article } from '../../models';
-import { ARTICLES } from '../../article.service';
 
 export interface State {
   articles: article[];
@@ -39,7 +38,7 @@ export interface State {
   selected: null,
 };*/
 
-export const initialState: State = { articles: ARTICLES, selected: 0};
+export const initialState: State = { articles: [], selected: 0};
 
 export function reducer(state = initialState, action: articleAction.Action) {
   switch (action.type) {

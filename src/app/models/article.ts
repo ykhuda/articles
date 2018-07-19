@@ -10,3 +10,9 @@ export interface article {
     urlToImage: string,
     publishedAt: string
 }
+
+export interface List {
+    name: string,
+    desc: string,
+    articles: article[]
+};
