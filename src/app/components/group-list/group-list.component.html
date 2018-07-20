@@ -10,51 +10,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let t of groups | async" (click)="selectGroup(t)">
+    <tr *ngFor="let t of groups | async">
       <td><span [class.completed]="t.isCompleted">{{ t.id }}</span></td>
       <td><span [class.completed]="t.isCompleted">{{ t.name }}</span></td>
+      <td><button class="btn btn-primary" class="btn btn-primary" (click)="selectGroup(t)">Edit</button></td>
     </tr>
   </tbody>
 </table>
 </div>
-
-<form (ngSubmit)="obSubmit()" #todoForm="ngForm">
-  <div class="form-row">
-    <div class="col-auto">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Description"
-        id="description"
-        [(ngModel)]="model.description"
-        name="description"
-        #description="ngModel">
-    </div>
-    <div class="col-auto">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Responsible"
-        id="responsible"
-        [(ngModel)]="model.responsible"
-        name="responsible"
-        #responsible="ngModel">
-    </div>
-    <div class="col-auto">
-      <select
-        class="form-control"
-        id="priority"
-        [(ngModel)]="model.priority"
-        name="priority"
-        #priority="ngModel">
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-      </select>
-    </div>
-    <div class="col-auto">
-      <button type="submit" class="btn btn-primary">Create</button>
-    </div>
-  </div>
-</form>
-<br />

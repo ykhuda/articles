@@ -3,7 +3,7 @@
     <div class="card-body">
       <div *ngIf="!selectedGroup">
         <button (click)="isArticles = true;" class="btn btn-primary">Articles</button>
-        <button (click)="isArticles = false" class="btn btn-primary">Groups</button>
+        <button (click)="isArticles = false;" class="btn btn-primary">Groups</button>
         <br/>
         <app-article-list *ngIf="isArticles"> </app-article-list>
         <app-group-list *ngIf="!isArticles"></app-group-list>

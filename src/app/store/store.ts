@@ -21,20 +21,18 @@ export function rootReducer(state: IAppState, action): IAppState {
   switch (action.type) {
     case SET_ARTICLES:
       return Object.assign({}, state, {
-        articles: state.articles.concat(action.articles),
-        lastUpdate: new Date()
+        articles: state.articles.concat(action.articles)
       })
 
     case ADD_GROUP:
       action.group.id = state.groups.length + 1;
       return Object.assign({}, state, {
-        groups: state.groups.concat(Object.assign({}, action.group)),
-        lastUpdate: new Date()
+        groups: state.groups.concat(Object.assign({}, action.group))
       })
 
     case ARTICLE_TO_GROUP:
       let group = state.groups.find(t => t.id === action.group.id);
-      group.articles.concat(Object.assign({}, action.article));
+      group.articles.push(Object.assign({}, action.article));
 
       var index = state.groups.indexOf(group);
 
@@ -43,33 +41,29 @@ export function rootReducer(state: IAppState, action): IAppState {
           ...state.groups.slice(0, index),
           Object.assign({}, group),
           ...state.groups.slice(index + 1)
-        ],
-        lastUpdate: new Date()
+        ]
       })
 
     case SELECTED_GROUP:
+      let selectedGroup:IGroup = action.group ? Object.assign({}, action.group) : null;
       return Object.assign({}, state, {
-        selectedGroup: Object.assign({}, action.group),
-        lastUpdate: new Date()
+        selectedGroup: selectedGroup
       })
 
     case ADD_ARTICLE:
       action.todo.id = state.articles.length + 1;
       return Object.assign({}, state, {
-        articles: state.articles.concat(Object.assign({}, action.todo)),
-        lastUpdate: new Date()
+        articles: state.articles.concat(Object.assign({}, action.todo))
       })
 
     case REMOVE_ARTICLE:
       return Object.assign({}, state, {
-        articles: state.articles.filter(t => t.id !== action.id),
-        lastUpdate: new Date()
+        articles: state.articles.filter(t => t.id !== action.id)
       })
 
     case REMOVE_ALL_TODOS:
       return Object.assign({}, state, {
-        articles: [],
-        lastUpdate: new Date()
+        articles: []
       })
   }
   return state;
