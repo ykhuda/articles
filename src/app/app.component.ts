@@ -28,6 +28,9 @@ export class AppComponent  implements OnInit  {
 
     this.articleService.getBussinessArticle().then((data) => {
       if ( !isUndefined(data)) {
+        for(let i = 0; i < data.length; i++){
+          data[i].id = i + 1;
+        }
         this.ngRedux.dispatch({type: SET_ARTICLES, articles: data});
       }
 
