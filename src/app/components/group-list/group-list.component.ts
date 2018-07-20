@@ -34,19 +34,6 @@ export class GroupListComponent implements OnInit {
   }
 
   selectGroup(group){
-    //this.selectedGroup = group;
     this.ngRedux.dispatch({type: SELECTED_GROUP, group: group});
-  }
-
-  obSubmit() {
-    this.ngRedux.dispatch({type: ADD_ARTICLE, todo: this.model});
-  }
-
-  toggleTodo(todo) {
-    this.ngRedux.dispatch({ type: TOGGLE_TODO, id: todo.id });
-  }
-
-  removeTodo(todo) {
-    this.ngRedux.dispatch({type: REMOVE_ARTICLE, id: todo.id });
   }
 }

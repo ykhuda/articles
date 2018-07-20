@@ -18,6 +18,8 @@ export const INITIAL_STATE: IAppState = {
 }
 
 export function rootReducer(state: IAppState, action): IAppState {
+  let group;
+
   switch (action.type) {
     case SET_ARTICLES:
       return Object.assign({}, state, {
@@ -31,7 +33,7 @@ export function rootReducer(state: IAppState, action): IAppState {
       })
 
     case ARTICLE_TO_GROUP:
-      let group = state.groups.find(t => t.id === action.group.id);
+      group = state.groups.find(t => t.id === action.group.id);
       group.articles.push(Object.assign({}, action.article));
 
       var index = state.groups.indexOf(group);
@@ -57,13 +59,20 @@ export function rootReducer(state: IAppState, action): IAppState {
       })
 
     case REMOVE_ARTICLE:
-      return Object.assign({}, state, {
-        articles: state.articles.filter(t => t.id !== action.id)
-      })
+      var article = state.selectedGroup.articles.find(t => t.id === action.article.id);
+      var index = state.selectedGroup.articles.indexOf(article);
+      state.selectedGroup.articles.splice(index, 1);
 
-    case REMOVE_ALL_TODOS:
+
+      group = state.groups.find(t => t.id === state.selectedGroup.id);
+      index = state.groups.indexOf(group);
+
       return Object.assign({}, state, {
-        articles: []
+        groups: [
+          ...state.groups.slice(0, index),
+          Object.assign({}, state.selectedGroup),
+          ...state.groups.slice(index + 1)
+        ]
       })
   }
   return state;
