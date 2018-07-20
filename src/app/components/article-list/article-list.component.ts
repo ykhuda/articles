@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '../../store/store';
 import { ADD_ARTICLE, REMOVE_ARTICLE, TOGGLE_TODO } from '../../store/actions';
-import { ITodo } from '../../models/todo';
+import { IArticle } from '../../models/article';
 
 @Component({
   selector: 'app-article-list',
@@ -12,7 +12,7 @@ import { ITodo } from '../../models/todo';
 export class TodoListComponent implements OnInit {
   @select() articles;
 
-  model: ITodo = {
+  model: IArticle = {
     id: 0,
 
   source: {

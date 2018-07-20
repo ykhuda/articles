@@ -1,8 +1,8 @@
-import { ITodo } from '../models/todo';
+import { IArticle } from '../models/article';
 import { SET_ARTICLES, ADD_ARTICLE, TOGGLE_TODO, REMOVE_ARTICLE, REMOVE_ALL_TODOS } from './actions';
 
 export interface IAppState {
-  articles: ITodo[];
+  articles: IArticle[];
   lastUpdate: Date;
 }
 
