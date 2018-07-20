@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '../../store/store';
-import { ARTICLE_TO_GROUP, ADD_GROUP, TOGGLE_TODO } from '../../store/actions';
+import { ARTICLE_TO_GROUP, ADD_GROUP } from '../../store/actions';
 import { IGroup } from '../../models/groups';
 
 @Component({

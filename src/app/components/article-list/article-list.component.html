@@ -1,13 +1,5 @@
-
-
-
 <div *ngIf="addToGroup">
   <h6>Add Article to Group:</h6>
-
-  <!--<select [(ngModel)]="selectedGroup">
-    <option *ngFor="let group of groupSelects" [ngValue]="group">{{group.name}}</option>
-  </select>-->
-
   <ul>
     <li *ngFor="let group of groups  | async" (click)="selectGroup(group)">{{group.name}}</li>
   </ul>
@@ -36,8 +28,6 @@
 
 <br />
 
-
-
 <h6>Articles List:</h6>
 <div *ngIf="(articles | async)?.length!=0">
 <table class="table">
@@ -52,11 +42,11 @@
   </thead>
   <tbody>
     <tr *ngFor="let t of articles | async">
-      <td><span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.id }}</span></td>
-      <td><span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.author }}</span></td>
-      <td><span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.title }}</span></td>
-      <td><span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.url }}</span></td>
-      <td><button class="btn btn-primary" class="btn btn-primary" (click)="articleToGroup(t)">Add to Group</button></td>
+      <td><span [class.completed]="t.isCompleted">{{ t.id }}</span></td>
+      <td><span [class.completed]="t.isCompleted">{{ t.author }}</span></td>
+      <td><span [class.completed]="t.isCompleted">{{ t.title }}</span></td>
+      <td><span [class.completed]="t.isCompleted">{{ t.url }}</span></td>
+      <td><button class="btntn-primary" class="btn btn-primary" (click)="articleToGroup(t)">Add to Group</button></td>
     </tr>
   </tbody>
 </table>
