@@ -9,16 +9,16 @@
     <thead class="thead-inverse">
     <tr>
       <th>#</th>
-      <th>Todo Description</th>
-      <th>Responsible</th>
-      <th>Priority</th>
+      <th>Author</th>
+      <th>Title</th>
+      <th>URL</th>
       <th></th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let t of selectedGroup.articles">
       <td><span [class.completed]="t.isCompleted">{{ t.id }}</span></td>
-      <td><span [class.completed]="t.isCompleted">{{ t.name }}</span></td>
+      <td><span [class.completed]="t.isCompleted">{{ t.author }}</span></td>
       <td><span [class.completed]="t.isCompleted">{{ t.title }}</span></td>
       <td><span [class.completed]="t.isCompleted">{{ t.url }}</span></td>
       <td><button class="btn btn-primary" class="btn btn-primary" (click)="deleteArticle(t)">Delete</button></td>
@@ -26,5 +26,52 @@
     </tbody>
   </table>
 </div>
+
+<br />
+
+
+<!--div *ngIf="addToGroup"-->
+
+
+<button (click)="createNewArticle($event)" class="btn btn-primary">Create new Article</button>
+<!--/div-->
+<br/>
+<form *ngIf="newArticle" (ngSubmit)="submitArticle()" #todoForm="ngForm">
+<div class="form-row">
+  <div class="row-auto">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Author"
+      id="author"
+      [(ngModel)]="model.author"
+      name="author"
+      #name="ngModel">
+  </div>
+  <div class="row-auto">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Title"
+      id="title"
+      [(ngModel)]="model.title"
+      name="title"
+      #name="ngModel">
+  </div>
+  <div class="row-auto">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="URL"
+      id="url"
+      [(ngModel)]="model.url"
+      name="url"
+      #name="ngModel">
+  </div>
+  <div class="row-auto">
+    <button type="submit" class="btn btn-primary">Create</button>
+  </div>
+</div>
+</form>
 
 <br />

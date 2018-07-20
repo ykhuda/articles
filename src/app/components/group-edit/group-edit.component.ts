@@ -17,6 +17,8 @@ export class GroupEditComponent implements OnInit {
   newArticle:boolean;
   selectedGroup: IGroup;
 
+  model:IArticle;
+
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
   ngOnInit() {
@@ -29,5 +31,12 @@ export class GroupEditComponent implements OnInit {
 
   deleteArticle(article){
     this.ngRedux.dispatch({type: REMOVE_ARTICLE, article: article});
+  }
+  createNewArticle(event) {
+    this.newArticle = true;
+  }
+  submitArticle() {
+    this.newArticle = false;
+    this.ngRedux.dispatch({type: NEW_ARTICLE, group: this.model});
   }
 }
