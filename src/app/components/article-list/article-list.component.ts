@@ -5,12 +5,12 @@ import { ADD_ARTICLE, REMOVE_ARTICLE, TOGGLE_TODO } from '../../store/actions';
 import { ITodo } from '../../models/todo';
 
 @Component({
-  selector: 'app-todo-list',
-  templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.css']
+  selector: 'app-article-list',
+  templateUrl: './article-list.component.html',
+  styleUrls: ['./article-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  @select() todos;
+  @select() articles;
 
   model: ITodo = {
     id: 0,

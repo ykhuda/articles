@@ -2,12 +2,12 @@ import { ITodo } from '../models/todo';
 import { SET_ARTICLES, ADD_ARTICLE, TOGGLE_TODO, REMOVE_ARTICLE, REMOVE_ALL_TODOS } from './actions';
 
 export interface IAppState {
-  todos: ITodo[];
+  articles: ITodo[];
   lastUpdate: Date;
 }
 
 export const INITIAL_STATE: IAppState = {
-  todos: [],
+  articles: [],
   lastUpdate: null
 }
 
@@ -15,38 +15,38 @@ export function rootReducer(state: IAppState, action): IAppState {
   switch (action.type) {
     case SET_ARTICLES:
       return Object.assign({}, state, {
-        todos: state.todos.concat(action.articles),
+        articles: state.articles.concat(action.articles),
         lastUpdate: new Date()
       })
 
     case ADD_ARTICLE:
-      action.todo.id = state.todos.length + 1;
+      action.todo.id = state.articles.length + 1;
       return Object.assign({}, state, {
-        todos: state.todos.concat(Object.assign({}, action.todo)),
+        articles: state.articles.concat(Object.assign({}, action.todo)),
         lastUpdate: new Date()
       })
 
     //case TOGGLE_TODO:
-    //  var todo = state.todos.find(t => t.id === action.id);
-    //  var index = state.todos.indexOf(todo);
+    //  var todo = state.articles.find(t => t.id === action.id);
+    //  var index = state.articles.indexOf(todo);
     //  return Object.assign({}, state, {
-    //    todos: [
-    //      ...state.todos.slice(0, index),
+    //    articles: [
+    //      ...state.articles.slice(0, index),
     //      Object.assign({}, todo, {isCompleted: !todo.isCompleted}),
-    //      ...state.todos.slice(index+1)
+    //      ...state.articles.slice(index+1)
     //    ],
     //    lastUpdate: new Date()
     //  })
 
     case REMOVE_ARTICLE:
       return Object.assign({}, state, {
-        todos: state.todos.filter(t => t.id !== action.id),
+        articles: state.articles.filter(t => t.id !== action.id),
         lastUpdate: new Date()
       })
 
     case REMOVE_ALL_TODOS:
       return Object.assign({}, state, {
-        todos: [],
+        articles: [],
         lastUpdate: new Date()
       })
   }

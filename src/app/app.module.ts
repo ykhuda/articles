@@ -6,7 +6,7 @@ import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
 import { AppComponent } from './app.component';
 import { TodoOverviewComponent } from './components/todo-overview/todo-overview.component';
-import { TodoListComponent } from './components/todo-list/todo-list.component';
+import { TodoListComponent } from './components/article-list/article-list.component';
 
 import { IAppState, rootReducer, INITIAL_STATE } from './store/store';
 

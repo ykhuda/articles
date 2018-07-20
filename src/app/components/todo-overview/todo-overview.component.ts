@@ -9,7 +9,7 @@ import { REMOVE_ALL_TODOS } from '../../store/actions';
   styleUrls: ['./todo-overview.component.css']
 })
 export class TodoOverviewComponent implements OnInit {
-  @select() todos;
+  @select() articles;
   @select() lastUpdate;
 
   constructor(private ngRedux: NgRedux<IAppState>) { }
