@@ -35,6 +35,7 @@ export class GroupEditComponent implements OnInit {
   createNewArticle(event) {
     this.model = {
       id: 0,  
+      isAdded: false,
       source: {id: '',name: ''},
       author: '',
       title:  '',

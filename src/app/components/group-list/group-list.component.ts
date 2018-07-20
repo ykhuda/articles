@@ -15,7 +15,7 @@ export class GroupListComponent implements OnInit {
 
   model: IArticle = {
     id: 0,
-
+    isAdded:true,
   source: {
     id: '',
     name: ''
