@@ -1,0 +1,5 @@
+export const SET_ARTICLES = 'SET_ARTICLE';
+export const ADD_ARTICLE = 'ADD_ARTICLE';
+export const TOGGLE_TODO = 'TOGGLE_TODO';
+export const REMOVE_ARTICLE = 'REMOVE_ARTICLE';
+export const REMOVE_ALL_TODOS = 'REMOVE_ALL_TODOS';

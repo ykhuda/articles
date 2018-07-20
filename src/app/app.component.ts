@@ -1,38 +1,28 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { article, List } from './models';
-import { Store } from '@ngrx/store';
-import * as fromRoot from './store/reducers';
-import * as articleAction from './store/actions/article';
-import { ArticleService } from './article.service';
-import { AppStore } from './app.store';
+import {Component, OnInit} from '@angular/core';
+import { NgRedux } from '@angular-redux/store';
+import {ArticleService} from './article.service';
+import {IAppState} from './store/store';
+import { SET_ARTICLES } from './store/actions';
+import {isUndefined} from 'util';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  articles$: Observable<article[]>;
-  selected$: Observable<article>;
-  appStore: AppStore;
-  
+export class AppComponent  implements OnInit  {
+  title = 'app';
 
-  constructor(private store: Store<fromRoot.State>, private articleService: ArticleService) {
-    this.articles$ = store.select(fromRoot.getAllarticles);
-    this.selected$ = store.select(fromRoot.getSelectedarticle);
-    this.appStore = AppStore.getInstance();
+  constructor(private ngRedux: NgRedux<IAppState>, private articleService: ArticleService) {
   }
 
   ngOnInit() {
-		this.articleService.getBussinessArticle().then((data)=> {
-    //  this.appStore.articles = data;
-			this.store.dispatch(new articleAction.Select(0));
-			console.log(  this.appStore.articles );
-		});
-	}
+    this.articleService.getBussinessArticle().then((data) => {
+      if ( !isUndefined(data)) {
+        this.ngRedux.dispatch({type: SET_ARTICLES, articles: data});
+      }
 
-  onSelect(id: number) {
-    this.store.dispatch(new articleAction.Select(id));
+      console.log( data );
+    });
   }
 }

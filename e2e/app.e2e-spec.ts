@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('ngrx-articles-list App', () => {
+describe('angularredux01 App', () => {
   let page: AppPage;
 
   beforeEach(() => {

@@ -1,6 +1,9 @@
-<mat-toolbar>articles app</mat-toolbar>
-<main class="container">
-  <app-article-list [articles]="articles$ | async" [label]="'Список фильмов'" (select)="onSelect($event)"></app-article-list>
-  <app-article-selected [article]="selected$ | async"></app-article-selected>
-</main>
-
+<div>
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Articles</h3>
+      <app-todo-overview></app-todo-overview>
+      <app-todo-list></app-todo-list>
+    </div>
+  </div>
+</div>
