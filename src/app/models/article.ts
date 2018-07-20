@@ -1,6 +1,6 @@
 export interface IArticle {
   id: number;
-
+  isAdded:boolean;
   source: {
     id: string,
     name: string

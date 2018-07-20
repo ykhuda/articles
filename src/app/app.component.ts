@@ -15,8 +15,6 @@ import {IGroup} from './models/groups';
 export class AppComponent  implements OnInit  {
   @select() selectedGroup$: Observable<IGroup>;
   selectedGroup: IGroup;
-
-  title = 'app';
   isArticles: boolean = true;
 
   constructor(private ngRedux: NgRedux<IAppState>, private articleService: ArticleService) {
@@ -30,6 +28,7 @@ export class AppComponent  implements OnInit  {
       if ( !isUndefined(data)) {
         for(let i = 0; i < data.length; i++){
           data[i].id = i + 1;
+          data[i].isAdded = false;
         }
         this.ngRedux.dispatch({type: SET_ARTICLES, articles: data});
       }
