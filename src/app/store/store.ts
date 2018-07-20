@@ -1,5 +1,5 @@
 import { IArticle } from '../models/article';
-import { SELECTED_GROUP, ARTICLE_TO_GROUP, ADD_GROUP, SET_ARTICLES, ADD_ARTICLE, REMOVE_ARTICLE, REMOVE_ALL_TODOS } from './actions';
+import { NEW_ARTICLE, EDIT_GROUP, SELECTED_GROUP, ARTICLE_TO_GROUP, ADD_GROUP, SET_ARTICLES, ADD_ARTICLE, REMOVE_ARTICLE, REMOVE_ALL_TODOS } from './actions';
 import {IGroup} from "../models/groups";
 import { createSelector } from 'reselect';
 
