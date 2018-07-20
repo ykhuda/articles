@@ -17,22 +17,6 @@ export class GroupEditComponent implements OnInit {
   newArticle:boolean;
   selectedGroup: IGroup;
 
-  model: IArticle =
-    {
-      id: 0,
-
-  source: {
-    id: '',
-    name: ''
-  },
-  author: '',
-  title: '',
-  description: '',
-  url: '',
-  urlToImage: '',
-  publishedAt: '',
-};
-
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
   ngOnInit() {
@@ -43,15 +27,7 @@ export class GroupEditComponent implements OnInit {
     this.ngRedux.dispatch({type: SELECTED_GROUP, group: null});
   }
 
-  editGroupName(){
-    //this.ngRedux.dispatch({type: EDIT_GROUP, group: this.selectedGroup});
-  }
-
-  addArticle(){
-    this.newArticle = true;
-  }
-
-  submitArticle(){
-    this.ngRedux.dispatch({type: NEW_ARTICLE, group: this.model});
+  deleteArticle(){
+    //this.ngRedux.dispatch({type: NEW_ARTICLE, group: this.model});
   }
 }
