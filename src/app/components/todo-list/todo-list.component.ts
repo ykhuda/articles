@@ -14,10 +14,17 @@ export class TodoListComponent implements OnInit {
 
   model: ITodo = {
     id: 0,
-    description: "",
-    responsible: "",
-    priority: "low",
-    isCompleted: false
+
+  source: {
+    id: '',
+    name: ''
+  },
+  author: '',
+  title: '',
+  description: '',
+  url: '',
+  urlToImage: '',
+  publishedAt: '',
   };
 
   constructor(private ngRedux: NgRedux<IAppState>) { }
