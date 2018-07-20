@@ -1,4 +1,6 @@
-export const SET_ARTICLES = 'SET_ARTICLE';
+export const SET_ARTICLES = 'SET_ARTICLES';
+export const ARTICLE_TO_GROUP = 'ARTICLE_TO_GROUP';
+export const ADD_GROUP = 'ADD_GROUP';
 export const ADD_ARTICLE = 'ADD_ARTICLE';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
 export const REMOVE_ARTICLE = 'REMOVE_ARTICLE';

@@ -1,30 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '../../store/store';
-import { ADD_ARTICLE, REMOVE_ARTICLE, TOGGLE_TODO } from '../../store/actions';
-import { IArticle } from '../../models/article';
+import { ARTICLE_TO_GROUP, ADD_GROUP, TOGGLE_TODO } from '../../store/actions';
+import { IGroup } from '../../models/groups';
 
 @Component({
   selector: 'app-article-list',
   templateUrl: './article-list.component.html',
   styleUrls: ['./article-list.component.css']
 })
-export class TodoListComponent implements OnInit {
+export class ArticleListComponent implements OnInit {
   @select() articles;
+  @select() groups;
 
-  model: IArticle = {
+  addToGroup: boolean = false;
+  newGroup: boolean = false;
+  selectedArticle;
+
+  model: IGroup = {
     id: 0,
-
-  source: {
-    id: '',
-    name: ''
-  },
-  author: '',
-  title: '',
-  description: '',
-  url: '',
-  urlToImage: '',
-  publishedAt: '',
+    name: '',
+    articles:  []
   };
 
   constructor(private ngRedux: NgRedux<IAppState>) { }
@@ -33,14 +29,19 @@ export class TodoListComponent implements OnInit {
   }
 
   obSubmit() {
-    this.ngRedux.dispatch({type: ADD_ARTICLE, todo: this.model});
+    this.ngRedux.dispatch({type: ADD_GROUP, group: this.model});
   }
 
   toggleTodo(todo) {
-    this.ngRedux.dispatch({ type: TOGGLE_TODO, id: todo.id });
+    this.ngRedux.dispatch({type: TOGGLE_TODO, id: todo.id });
   }
 
-  removeTodo(todo) {
-    this.ngRedux.dispatch({type: REMOVE_ARTICLE, id: todo.id });
+  articleToGroup(article) {
+    this.addToGroup = true;
+    this.selectedArticle = article;
+  }
+
+  pushToGroup(event) {
+    this.ngRedux.dispatch({type: ARTICLE_TO_GROUP, article: this.selectedArticle });
   }
 }

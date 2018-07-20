@@ -1,13 +1,16 @@
 import { IArticle } from '../models/article';
-import { SET_ARTICLES, ADD_ARTICLE, TOGGLE_TODO, REMOVE_ARTICLE, REMOVE_ALL_TODOS } from './actions';
+import { ARTICLE_TO_GROUP, ADD_GROUP, SET_ARTICLES, ADD_ARTICLE, REMOVE_ARTICLE, REMOVE_ALL_TODOS } from './actions';
+import {IGroup} from "../models/groups";
 
 export interface IAppState {
   articles: IArticle[];
+  groups: IGroup[];
   lastUpdate: Date;
 }
 
 export const INITIAL_STATE: IAppState = {
   articles: [],
+  groups: [],
   lastUpdate: null
 }
 
@@ -19,24 +22,26 @@ export function rootReducer(state: IAppState, action): IAppState {
         lastUpdate: new Date()
       })
 
+    case ADD_GROUP:
+      action.group.id = state.groups.length + 1;
+      return Object.assign({}, state, {
+        groups: state.groups.concat(Object.assign({}, action.article)),
+        lastUpdate: new Date()
+      })
+
+    case ARTICLE_TO_GROUP:
+      action.group.id = state.groups.length + 1;
+      return Object.assign({}, state, {
+        groups: state.groups.concat(Object.assign({}, action.group)),
+        lastUpdate: new Date()
+      })
+
     case ADD_ARTICLE:
       action.todo.id = state.articles.length + 1;
       return Object.assign({}, state, {
         articles: state.articles.concat(Object.assign({}, action.todo)),
         lastUpdate: new Date()
       })
-
-    //case TOGGLE_TODO:
-    //  var todo = state.articles.find(t => t.id === action.id);
-    //  var index = state.articles.indexOf(todo);
-    //  return Object.assign({}, state, {
-    //    articles: [
-    //      ...state.articles.slice(0, index),
-    //      Object.assign({}, todo, {isCompleted: !todo.isCompleted}),
-    //      ...state.articles.slice(index+1)
-    //    ],
-    //    lastUpdate: new Date()
-    //  })
 
     case REMOVE_ARTICLE:
       return Object.assign({}, state, {
