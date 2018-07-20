@@ -19,6 +19,7 @@ export const INITIAL_STATE: IAppState = {
 
 export function rootReducer(state: IAppState, action): IAppState {
   let group;
+  let article;
 
   switch (action.type) {
     case SET_ARTICLES:
