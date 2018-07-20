@@ -7,10 +7,10 @@
     <li *ngFor="let group of groups  | async">{{group.name}}</li>
   </ul>
   <button (click)="pushToGroup($event)">Add Article to selected Group</button>
+  <button (click)="createNewGroup($event)">Create new Group</button>
 </div>
 
-<form *ngIf="newGroup" (ngSubmit)="obSubmit()" #todoForm="ngForm">
-  <h6>Create new Group:</h6>
+<form *ngIf="newGroup" (ngSubmit)="submitGroup()" #todoForm="ngForm">
   <div class="form-row">
     <div class="col-auto">
       <input

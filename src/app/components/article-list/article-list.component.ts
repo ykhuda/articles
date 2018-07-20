@@ -28,7 +28,7 @@ export class ArticleListComponent implements OnInit {
   ngOnInit() {
   }
 
-  obSubmit() {
+  submitGroup() {
     this.ngRedux.dispatch({type: ADD_GROUP, group: this.model});
   }
 
@@ -39,6 +39,10 @@ export class ArticleListComponent implements OnInit {
   articleToGroup(article) {
     this.addToGroup = true;
     this.selectedArticle = article;
+  }
+
+  createNewGroup(event) {
+    this.newGroup = true;
   }
 
   pushToGroup(event) {

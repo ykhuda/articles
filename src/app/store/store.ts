@@ -25,7 +25,7 @@ export function rootReducer(state: IAppState, action): IAppState {
     case ADD_GROUP:
       action.group.id = state.groups.length + 1;
       return Object.assign({}, state, {
-        groups: state.groups.concat(Object.assign({}, action.article)),
+        groups: state.groups.concat(Object.assign({}, action.group)),
         lastUpdate: new Date()
       })
 

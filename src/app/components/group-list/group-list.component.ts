@@ -11,6 +11,7 @@ import { IArticle } from '../../models/article';
 })
 export class GroupListComponent implements OnInit {
   @select() articles;
+  @select() groups;
 
   model: IArticle = {
     id: 0,

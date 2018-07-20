@@ -1,8 +1,12 @@
 <div>
   <div class="card">
     <div class="card-body">
-      <app-article-list></app-article-list>
-      <!--<app-group-list></app-group-list>-->
+      <div>
+        <button (click)="isArticles = true;">Articles</button>
+        <button (click)="isArticles = false">Groups</button>
+      </div>
+      <app-article-list *ngIf="isArticles"> </app-article-list>
+      <app-group-list *ngIf="!isArticles"></app-group-list>
     </div>
   </div>
 </div>

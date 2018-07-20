@@ -12,9 +12,11 @@ import {isUndefined} from 'util';
 })
 export class AppComponent  implements OnInit  {
   title = 'app';
+  isArticles: boolean = true;
 
   constructor(private ngRedux: NgRedux<IAppState>, private articleService: ArticleService) {
   }
+
 
   ngOnInit() {
     this.articleService.getBussinessArticle().then((data) => {
