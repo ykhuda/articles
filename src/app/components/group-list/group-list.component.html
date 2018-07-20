@@ -10,9 +10,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let t of groups | async">
-      <td><span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.id }}</span></td>
-      <td><span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.name }}</span></td>
+    <tr *ngFor="let t of groups | async" (click)="selectGroup(t)">
+      <td><span [class.completed]="t.isCompleted">{{ t.id }}</span></td>
+      <td><span [class.completed]="t.isCompleted">{{ t.name }}</span></td>
     </tr>
   </tbody>
 </table>

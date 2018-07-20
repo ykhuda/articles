@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import { NgRedux } from '@angular-redux/store';
+import { NgRedux, select } from '@angular-redux/store';
 import {ArticleService} from './article.service';
 import {IAppState} from './store/store';
 import { SET_ARTICLES } from './store/actions';
 import {isUndefined} from 'util';
+import {Observable} from 'rxjs/Observable';
+import {IGroup} from './models/groups';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +13,19 @@ import {isUndefined} from 'util';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent  implements OnInit  {
+  @select() selectedGroup$: Observable<IGroup>;
+  selectedGroup: IGroup;
+
   title = 'app';
   isArticles: boolean = true;
 
   constructor(private ngRedux: NgRedux<IAppState>, private articleService: ArticleService) {
   }
 
-
   ngOnInit() {
+
+    this.selectedGroup$.subscribe(selectedGroup => this.selectedGroup = selectedGroup)
+
     this.articleService.getBussinessArticle().then((data) => {
       if ( !isUndefined(data)) {
         this.ngRedux.dispatch({type: SET_ARTICLES, articles: data});

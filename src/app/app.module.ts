@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
 import { AppComponent } from './app.component';
-import { TodoOverviewComponent } from './components/todo-overview/todo-overview.component';
+import { GroupEditComponent } from './components/group-edit/group-edit.component';
 import { ArticleListComponent } from './components/article-list/article-list.component';
 
 import { IAppState, rootReducer, INITIAL_STATE } from './store/store';
@@ -18,7 +18,7 @@ import { GroupListComponent } from './components/group-list/group-list.component
 @NgModule({
   declarations: [
     AppComponent,
-    TodoOverviewComponent,
+    GroupEditComponent,
     ArticleListComponent,
     GroupListComponent
   ],

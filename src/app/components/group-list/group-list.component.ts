@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '../../store/store';
-import { ADD_ARTICLE, REMOVE_ARTICLE, TOGGLE_TODO } from '../../store/actions';
+import { SELECTED_GROUP, ADD_ARTICLE, REMOVE_ARTICLE, TOGGLE_TODO } from '../../store/actions';
 import { IArticle } from '../../models/article';
 
 @Component({
@@ -31,6 +31,11 @@ export class GroupListComponent implements OnInit {
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
   ngOnInit() {
+  }
+
+  selectGroup(group){
+    //this.selectedGroup = group;
+    this.ngRedux.dispatch({type: SELECTED_GROUP, group: group});
   }
 
   obSubmit() {

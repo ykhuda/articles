@@ -4,12 +4,12 @@ import { IAppState } from '../../store/store';
 import { REMOVE_ALL_TODOS } from '../../store/actions';
 
 @Component({
-  selector: 'app-todo-overview',
-  templateUrl: './todo-overview.component.html',
-  styleUrls: ['./todo-overview.component.css']
+  selector: 'app-group-edit',
+  templateUrl: './group-edit.component.html',
+  styleUrls: ['./group-edit.component.css']
 })
-export class TodoOverviewComponent implements OnInit {
-  @select() articles;
+export class GroupEditComponent implements OnInit {
+  @select() seleted;
   @select() lastUpdate;
 
   constructor(private ngRedux: NgRedux<IAppState>) { }
@@ -20,5 +20,4 @@ export class TodoOverviewComponent implements OnInit {
   clearTodos() {
     this.ngRedux.dispatch({type: REMOVE_ALL_TODOS});
   }
-
 }
