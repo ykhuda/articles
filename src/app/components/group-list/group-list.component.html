@@ -12,7 +12,7 @@
     <tr *ngFor="let t of groups | async">
       <td><span [class.completed]="t.isCompleted">{{ t.id }}</span></td>
       <td><span [class.completed]="t.isCompleted">{{ t.name }}</span></td>
-      <td><button class="btn btn-primary" class="btn btn-primary" (click)="selectGroup(t)">Edit</button></td>
+      <td><button class="btn btn-primary" class="btn btn-primary" (click)="selectGroup(t)">View/Edit</button></td>
     </tr>
   </tbody>
 </table>

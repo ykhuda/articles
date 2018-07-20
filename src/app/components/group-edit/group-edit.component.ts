@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '../../store/store';
-import { REMOVE_ARTICLE, NEW_ARTICLE, EDIT_GROUP, SELECTED_GROUP } from '../../store/actions';
+import { REMOVE_ARTICLE, ARTICLE_TO_GROUP,  SELECTED_GROUP } from '../../store/actions';
 import {Observable} from "rxjs/Observable";
 import {IGroup} from "../../models/groups";
 import {IArticle} from "../../models/article";
@@ -33,10 +33,20 @@ export class GroupEditComponent implements OnInit {
     this.ngRedux.dispatch({type: REMOVE_ARTICLE, article: article});
   }
   createNewArticle(event) {
+    this.model = {
+      id: 0,  
+      source: {id: '',name: ''},
+      author: '',
+      title:  '',
+      description:  '',
+      url:  '',
+      urlToImage:  '',
+      publishedAt:  ''
+    }
     this.newArticle = true;
   }
   submitArticle() {
     this.newArticle = false;
-    this.ngRedux.dispatch({type: NEW_ARTICLE, group: this.model});
+    this.ngRedux.dispatch({type: ARTICLE_TO_GROUP, group: this.selectedGroup, article: this.model });
   }
 }

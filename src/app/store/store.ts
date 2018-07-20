@@ -19,8 +19,6 @@ export const INITIAL_STATE: IAppState = {
 
 export function rootReducer(state: IAppState, action): IAppState {
   let group;
-  let index;
-  let article;
 
   switch (action.type) {
     case SET_ARTICLES:
@@ -37,7 +35,13 @@ export function rootReducer(state: IAppState, action): IAppState {
     case ARTICLE_TO_GROUP:
       group = state.groups.find(t => t.id === action.group.id);
       group.articles.push(Object.assign({}, action.article));
-      index = state.groups.indexOf(group);
+
+      if ( action.article.id ==0)
+      {
+        action.article.id = state.articles.length+1;
+      }
+
+      var index = state.groups.indexOf(group);
 
       return Object.assign({}, state, {
         groups: [
