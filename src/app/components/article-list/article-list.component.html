@@ -3,13 +3,19 @@
 
 <div *ngIf="addToGroup">
   <h6>Add Article to Group:</h6>
-  <ul>
-    <li *ngFor="let group of groups  | async">{{group.name}}</li>
-  </ul>
-  <button (click)="pushToGroup($event)">Add Article to selected Group</button>
-  <button (click)="createNewGroup($event)">Create new Group</button>
-</div>
 
+  <!--<select [(ngModel)]="selectedGroup">
+    <option *ngFor="let group of groupSelects" [ngValue]="group">{{group.name}}</option>
+  </select>-->
+
+  <ul>
+    <li *ngFor="let group of groups  | async" (click)="selectGroup(group)">{{group.name}}</li>
+  </ul>
+
+  <button [disabled]="this.selectedGroup == undefined" (click)="pushToGroup($event)" class="btn btn-primary">Add Article to selected Group</button>
+  <button (click)="createNewGroup($event)" class="btn btn-primary">Create new Group</button>
+</div>
+<br/>
 <form *ngIf="newGroup" (ngSubmit)="submitGroup()" #todoForm="ngForm">
   <div class="form-row">
     <div class="col-auto">
@@ -50,7 +56,7 @@
       <td><span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.name }}</span></td>
       <td><span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.title }}</span></td>
       <td><span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.url }}</span></td>
-      <td><button class="btn btn-primary" (click)="articleToGroup(t)">Add</button></td>
+      <td><button class="btn btn-primary" class="btn btn-primary" (click)="articleToGroup(t)">Add</button></td>
     </tr>
   </tbody>
 </table>

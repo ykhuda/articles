@@ -13,9 +13,12 @@ export class ArticleListComponent implements OnInit {
   @select() articles;
   @select() groups;
 
+  groupSelects = [];
+
   addToGroup: boolean = false;
   newGroup: boolean = false;
   selectedArticle;
+  selectedGroup;
 
   model: IGroup = {
     id: 0,
@@ -26,6 +29,10 @@ export class ArticleListComponent implements OnInit {
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
   ngOnInit() {
+  }
+
+  selectGroup(group){
+    this.selectedGroup = group;
   }
 
   submitGroup() {
@@ -46,6 +53,6 @@ export class ArticleListComponent implements OnInit {
   }
 
   pushToGroup(event) {
-    this.ngRedux.dispatch({type: ARTICLE_TO_GROUP, article: this.selectedArticle });
+    this.ngRedux.dispatch({type: ARTICLE_TO_GROUP, group: this.selectedGroup, article: this.selectedArticle });
   }
 }
