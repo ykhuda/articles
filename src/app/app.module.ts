@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ArticleService } from './article.service';
 import { HttpRequestor } from './common/http-requestor';
 import { HttpClientModule } from '@angular/common/http';
+import {AppStore} from './app.store';
 
 export const MATERIAL_MODULES = [
   MatToolbarModule,
@@ -40,7 +41,8 @@ export const MATERIAL_MODULES = [
   ],
   providers: [
     ArticleService,
-    HttpRequestor
+    HttpRequestor,
+    AppStore
 ],
   bootstrap: [AppComponent]
 })

@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from './store/reducers';
 import * as articleAction from './store/actions/article';
 import { ArticleService } from './article.service';
+import { AppStore } from './app.store';
 
 @Component({
   selector: 'app-root',
@@ -14,20 +15,20 @@ import { ArticleService } from './article.service';
 export class AppComponent {
   articles$: Observable<article[]>;
   selected$: Observable<article>;
-  articles: Observable<article[]>;
-	lists: Observable<List[]>;
+  appStore: AppStore;
   
 
   constructor(private store: Store<fromRoot.State>, private articleService: ArticleService) {
     this.articles$ = store.select(fromRoot.getAllarticles);
     this.selected$ = store.select(fromRoot.getSelectedarticle);
+    this.appStore = AppStore.getInstance();
   }
 
   ngOnInit() {
 		this.articleService.getBussinessArticle().then((data)=> {
-      this.articles = data;
+    //  this.appStore.articles = data;
 			this.store.dispatch(new articleAction.Select(0));
-			console.log( this.articles );
+			console.log(  this.appStore.articles );
 		});
 	}
 
